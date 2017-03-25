@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 abstract class dog{
     public string name;
@@ -34,13 +35,16 @@ abstract class dog{
 
     public abstract void speak(string[] c);
     public abstract void showInfo();
+    public static void sayhi1()
+    {
+        Console.WriteLine("hi");
+
+    }
 
 }
 
 class pug : dog {
     public bool snorer;
-
-
 
     public pug(string name, string color, int age, int birthYear, bool snorer) : base(name, color, age, birthYear)
     {
@@ -54,6 +58,7 @@ class pug : dog {
 
     public override void showInfo() {
         Console.WriteLine("Name:{0}\nColor: {1}\nAge: {2}\nBirth Year: {3}\nSnore: {4}\n", name, color, age, birthYear, snorer);
+        
     }
 
     //try overriding Equal, ==, !=, GetHashCode
@@ -83,24 +88,24 @@ class pug : dog {
         else
             return true;
     }
-    string[] dialog;
+
     public override void speak(string[] dialog)
     {
-        if (dialog.Length > 3) throw new dogException();
+     
+       var selectedDialog = from n in dialog
+                             where true
+                             select n;
 
+        foreach(string s in selectedDialog) 
+            Console.WriteLine(name + " says: " + s);
 
-        this.dialog = new string[dialog.Length];   
+        dialog[1] = "hehehe";
 
-        for (int i = 0; i < dialog.Length; i++) {
-            this.dialog[i] = dialog[i];
-        }
-
-
-        for (int i = 0; i <= dialog.Length; i++)
-        {
-            Console.WriteLine(name + " says: " + dialog[i]);
-        }
-     }
+        foreach (string s in selectedDialog)
+            Console.WriteLine(name + " says: " + s);
+        if (dialog.Length >= 3) throw new dogException();
+        //if (dialog.Length > 3) throw new dogException();
+    }
 }
 
 class chihuahua : dog {
@@ -121,31 +126,25 @@ class chihuahua : dog {
     {
         Console.WriteLine("Name:{0}\nColor: {1}\nAge: {2}\nBirth Year: {3}\nGroomed: {4}\n", name, color, age, birthYear, isGroomed);
     }
-    string[] dialog;
+
     public override void speak(string[] dialog)
     {
      //   if (dialog.Length > 3) throw new dogException();
 
+        for (int i = 0; i < dialog.Length; i++)
+            Console.WriteLine(name + " says: " + dialog[i]);
 
-        this.dialog = new string[dialog.Length];
+        dialog[1] = "hehehe";
 
         for (int i = 0; i < dialog.Length; i++)
-        {
-            this.dialog[i] = dialog[i];
-        }
-
-
-        for (int i = 0; i <= dialog.Length; i++)
-        {
             Console.WriteLine(name + " says: " + dialog[i]);
-        }
     }
 
 }
 
 class dogException : Exception {
 
-    public dogException() { Console.WriteLine("error: dog talks too much"); }
+    public dogException() {}
     public dogException(string message):base(message) {
         Console.WriteLine(message);
     }

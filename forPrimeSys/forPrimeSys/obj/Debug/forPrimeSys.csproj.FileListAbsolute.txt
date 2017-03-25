@@ -4,3 +4,13 @@ c:\users\renee\documents\visual studio 2015\Projects\forPrimeSys\forPrimeSys\bin
 c:\users\renee\documents\visual studio 2015\Projects\forPrimeSys\forPrimeSys\obj\Debug\forPrimeSys.csprojResolveAssemblyReference.cache
 c:\users\renee\documents\visual studio 2015\Projects\forPrimeSys\forPrimeSys\obj\Debug\forPrimeSys.exe
 c:\users\renee\documents\visual studio 2015\Projects\forPrimeSys\forPrimeSys\obj\Debug\forPrimeSys.pdb
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\forPrimeSys.exe.config
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\obj\Debug\forPrimeSys.exe
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\obj\Debug\forPrimeSys.pdb
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\forPrimeSys.exe
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\forPrimeSys.pdb
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\obj\Debug\forPrimeSys.csprojResolveAssemblyReference.cache
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\EntityFramework.dll
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\EntityFramework.xml
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\EntityFramework.SqlServer.xml

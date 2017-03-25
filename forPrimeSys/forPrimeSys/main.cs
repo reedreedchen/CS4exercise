@@ -10,9 +10,7 @@ using Renee;
 /// from Primesys Tech
 /// </summary>
 class main {
-    
-
-    static void Main()
+    static void Main(string[] args)
     {/*
         Tests.sayHi();  Console.WriteLine();
         Tests.variables(); Console.WriteLine();
@@ -50,10 +48,35 @@ class main {
      //Tests.operatorOverloading(); Console.WriteLine();
      //Tests.carIndexer(); Console.WriteLine();
      // PowerOfTwo.runPowerOfTwo();
-   //  Tests.dogInheritance();
-        //    Tests.tryInterface();
-        //Tests.tryEnum();
-        Tests.checkOverflow();
+     //Tests.dogInheritance();
+     //    Tests.tryInterface();
+     //Tests.tryEnum();
+     //     Tests.checkOverflow();
+     // Tests.consoleStuff();
+     // Tests.consoleError();
+     // Tests.fileStreamTest();
+     //    Tests.readingFiles();
+     //   Tests.writingFiles();
+     // Tests.copyFiles();
+     // Tests.streamW_r();
+     // Tests.streamW_r2();
+     //Tests.streamR();
+     //Tests.redirect();
+     //   Tests.binaryWriter();
+     // Tests.RandomAccess();
+     //  Tests.memoryStream();
+     //  Tests.stringWriter();
+     //  Tests.fileClass();
+     // Tests.tryParse();
+     //  Tests.delegateTest();
+     //    Tests.delegateMultitasking();
+
+        //     Tests.tryContraVariance();
+        //  Tests.tryAnonymousMethod();
+        //  Tests.tryCapture();
+
+        //Tests.lambda(); //expression lambda
+        Tests.statementLambda();
     }
 
     

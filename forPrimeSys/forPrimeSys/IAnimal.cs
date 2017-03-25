@@ -21,7 +21,6 @@ public interface IAnimal
         get;
         set;
     }
-
 }
 class Animal : IAnimal {
 
@@ -47,7 +46,7 @@ class Animal : IAnimal {
         if (a.allowNameChange(newName))
             name = newName;
     }
-
+    
 
     public string this[int index] {
         get
@@ -100,12 +99,19 @@ class Animal : IAnimal {
     {
         Console.WriteLine(GetInfo());
     } 
+
+    public static void sayHI()
+    {
+        Console.WriteLine("hi");
+
+    }
 }
 
 class Cat : Animal {
 
     string color;
     int age;
+
 
     public Cat(string name, string color, int age) : base(name, "Cat")
     {
@@ -146,7 +152,7 @@ struct mouse
             default:
                 Console.WriteLine("no mouse");
                 break;
-        }
+    }
 
     }
 }

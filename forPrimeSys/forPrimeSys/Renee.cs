@@ -8,6 +8,7 @@
  * */
 
 using System;
+using System.IO;
 //namespace->defines a declarative region->doesn't conflict 
 //System is the namespace reserved for items associated with the .NET Framework class library
 //I can create my own namespace
@@ -411,7 +412,7 @@ namespace Renee
             Emma.showInfo();
             pug Emily = new pug(Emma);
 
-
+            
 
             Emily.name = "Emily";
 
@@ -427,15 +428,15 @@ namespace Renee
             {
                 try
                 {
-                    Emma.speak(new string[] {"hi","my name is Emma.","I am a talkative pug", "as you can see"} );
-                    Eagle.speak(new string[] {"hi", "my name is Eagle."});
+                    Emma.speak(new string[] { "hi", "my name is Emma.", "I am a talkative pug", "as you can see" });
+                    Eagle.speak(new string[] { "hi", "my name is Eagle." });
 
-                  //  throw new DivideByZeroException(); //manually throw to catch
+                    //  throw new DivideByZeroException(); //manually throw to catch
                 }
-                catch // this will catch dogException
+                catch (dogException) // this will catch dogException
                 {
 
-                    Console.WriteLine("bad");
+                    Console.WriteLine("error: dog talks too much");
                     //throw; //manually throw outter catch
                 }
                 finally {
@@ -485,12 +486,425 @@ namespace Renee
             byte b = 127;
             try
             {
-                Console.WriteLine(unchecked((byte)(a * b)));
+                Console.WriteLine(checked((byte)(a * b)));
             }
             catch (OverflowException exc) {
-                Console.WriteLine(exc);
+                Console.Error.WriteLine(exc.Message);
             }
         }
 
+        public static void consoleStuff() {
+           // string name;
+            
+        //    name = Console.In.ReadLine();
+        //    Console.WriteLine(name);
+
+            ConsoleKeyInfo keypressed;
+            
+            do
+            {
+                keypressed = Console.ReadKey();
+
+                Console.WriteLine(" You pressed:" + keypressed.KeyChar);
+
+                if((ConsoleModifiers.Alt & keypressed.Modifiers) != 0) 
+                     Console.WriteLine("Alt");
+                if ((ConsoleModifiers.Shift & keypressed.Modifiers) != 0)
+                    Console.WriteLine("Shift");
+                if ((ConsoleModifiers.Control & keypressed.Modifiers) != 0)
+                    Console.WriteLine("Ctrl");
+
+            } while (keypressed.KeyChar != 'Q');
+            
+
+        }
+
+        public static void fileStreamTest()
+        {
+
+            try
+            {
+                FileStream fs = new FileStream("C:/Users/Renee/Desktop/HTC_reneeCoverLetter.pdf", FileMode.Open);
+            }
+            catch (IOException i)
+            {
+                Console.WriteLine(i.Message);
+            }
+            catch (Exception exc) {
+                Console.WriteLine(exc);
+            }
+            
+
+        }
+
+        public static void readingFiles()
+        {
+
+            FileStream fs;
+
+
+ 
+           fs = new FileStream("test.txt", FileMode.Open);
+  
+            
+            int i;
+       
+            do
+            {
+                i = fs.ReadByte();
+                if (i != -1) Console.Write((char)i);
+
+            } while (i != -1);
+       
+            fs.Close();
+
+        }
+       
+        public static void writingFiles()
+        {
+
+
+            FileStream fs = new FileStream("test1.txt", FileMode.Open);
+            
+            string inputString = Console.ReadLine();
+
+            foreach (char c in inputString) {
+                fs.WriteByte((byte)c);
+            }
+            fs.Close();
+
+             
+        }
+         
+        public static void copyFiles()
+        {
+            FileStream fs = new FileStream("test1.txt", FileMode.Open);
+
+            FileStream fs2 = new FileStream("test2.txt", FileMode.Create);
+            string inputString = Console.ReadLine();
+
+            int i;
+
+            do
+            {
+                i = fs.ReadByte();
+                if (i != -1) fs2.WriteByte((byte) i);
+            }
+            while (i != -1);
+            fs.Close();
+            fs2.Close();
+
+
+        }
+
+        public static void streamW_r() {
+            FileStream fs = new FileStream("test3.txt", FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+
+            string str;
+
+            do {
+                str = Console.ReadLine();
+                if (str != "stop") sw.Write(str+"\r\n");
+            } while (str != "stop");
+            sw.Close();
+
+        }
+        public static void streamW_r2()
+        {
+
+            StreamWriter sw = new StreamWriter("test3.txt");
+            
+            string str;
+            do
+            {
+                str = Console.ReadLine();
+                if (str != "stop") sw.Write(str + "\r\n");
+            } while (str != "stop");
+            sw.Close();
+
+        }
+        public static void streamR()
+        {
+            try
+            {
+                StreamReader sr = new StreamReader("test3.txt");
+                string str;
+                while (!sr.EndOfStream)
+                {   
+                    str = sr.ReadLine();
+                    Console.WriteLine(str);
+                }
+            }
+            catch (FileNotFoundException e) {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void redirect() {
+
+            FileStream fs = new FileStream("text4.txt", FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+            
+           // Console.SetOut(sw); //redirect stream of console to text file. 
+            Console.WriteLine("MY NAME IS RENEE.");
+            Console.WriteLine("My pug Emma is so cute.");
+            
+            sw.Close();
+
+        }
+        public static void binaryWriter()
+        {
+            string EmmaName ="Emma";
+            bool IsEmmaCute = true;
+            FileStream fs = new FileStream("text6.txt", FileMode.Create);
+            BinaryWriter bw = new BinaryWriter(fs);
+
+            bw.Write(IsEmmaCute);
+            bw.Write(EmmaName);
+            bw.Close();
+
+            IsEmmaCute = false;
+            EmmaName = "default";
+
+            fs = new FileStream("text6.txt", FileMode.Open);
+            BinaryReader br = new BinaryReader(fs);
+
+            
+            IsEmmaCute = br.ReadBoolean();
+            EmmaName = br.ReadString();
+
+            if (IsEmmaCute) {
+                Console.WriteLine(EmmaName);
+            }
+            
+            br.Close();
+
+        }
+
+        public static void RandomAccess()
+        {
+
+            FileStream fs = new FileStream("text7.txt", FileMode.OpenOrCreate);
+          
+            string emma = "Emma is so cute.";
+           
+            foreach (char c in emma)
+            {
+                fs.WriteByte((byte)c);
+            }
+
+
+         //    fs.Seek(0, SeekOrigin.Begin);
+            //fs.Flush();
+          //  fs.Position = 5;
+            char ch;
+            int i;
+            // int count=0;
+            do
+            {
+                i = fs.ReadByte();
+                ch = (char)i;
+                if (i != -1)
+                {
+                    Console.WriteLine(ch);
+                }
+              //  count++;
+            } while (i != -1);
+  
+            fs.Close();
+
+        }
+
+        public static void memoryStream()
+        {
+            byte[] storage = new byte[255];
+
+            MemoryStream ms = new MemoryStream(storage);
+
+            StreamWriter mw = new StreamWriter(ms);
+            StreamReader mr = new StreamReader(ms);
+
+
+            string myName = Console.ReadLine();
+
+            for (int i = 0; i < myName.Length; i++)
+                mw.Write(myName[i]);
+
+            mw.WriteLine();
+
+            mw.Flush();
+            ms.Seek(0, SeekOrigin.Begin);// reset file pointer
+
+            string str;
+            do {
+                str = mr.ReadLine();
+                if(str != null) Console.WriteLine(str);
+            } while (str != null);
+
+            mw.Close();
+            mr.Close();
+        } 
+
+        public static void stringWriter()
+        {
+            StringWriter sw = new StringWriter();
+
+            sw.WriteLine("hi this is renee");
+            sw.WriteLine("i m going to NJ");
+            StringReader sr = new StringReader(sw.ToString());
+            string str = sr.ReadLine();
+
+            while (str != null) {
+                str = sr.ReadLine();
+                Console.WriteLine(str);
+            }
+            sw.Close();
+            sr.Close();
+
+        }
+        public static void fileClass() {        
+            //File.Copy("text7.txt", "text8.txt", true);
+            if (File.Exists("text8.txt"))
+            {
+                Console.WriteLine(File.GetLastAccessTime("text8.txt"));
+                Console.WriteLine(File.GetCreationTime("text8.txt"));
+            }
+        }
+        public static void tryParse()
+        {
+
+            string str = "200";
+            int a;
+
+            string str1 = "10";
+            int b;
+
+            bool try_a = Int32.TryParse(str, out a);
+            bool try_b = Int32.TryParse(str1, out b);
+           if(try_a && try_b)  Console.WriteLine(a / b);
+
+        }
+        public static void delegateTest()
+        {
+
+            // StrMod strOP = new StrMod(try_delegate.ReplaceSpaces);
+            StrMod strOP = try_delegate.ReplaceSpaces;
+
+            string str = "this is a test";
+        //    str = try_delegate.ReplaceSpaces(str);
+    //        str = strOP(str);
+
+       //     Console.WriteLine("result: " + str);
+        //    Console.WriteLine();
+
+
+          //  try_delegate td = new try_delegate();
+       //     StrMod strOP = td.RemoveSpaces;
+            //str = "this is a test";
+            str = strOP(str);
+            Console.WriteLine("result: " + str);
+            Console.WriteLine();
+
+
+        }
+
+        public static void delegateMultitasking()
+        {
+            StrMod chain;
+            StrMod a = try_delegate.ReplaceSpaces;
+            StrMod b = try_delegate.reverseSTring;
+            string str = "this is a test";
+            chain = a + b;
+            //chain -= b;
+
+            str = chain(str);
+
+            //str = a(str);
+            //str = b(str);        
+            
+            Console.WriteLine(str);
+        }
+
+        public static void tryContraVariance()
+        {
+
+                Y_child y = new Y_child();
+
+               changeIt ci = ContraVariance.incrA; 
+            
+
+               y.val = 100;
+               y.a = 500;
+            Y_child Y = (Y_child)ci(y);
+                Console.WriteLine(y.val);
+
+            changeIt2 ci2 = ContraVariance.incrB;
+        }
+        delegate int countIt(int x);
+        public static void tryAnonymousMethod()
+        {
+
+            countIt count = delegate (int x)
+            {
+                x += 1;
+                return x;
+            };
+
+            int i= 5;
+            i = count(5);
+
+            Console.WriteLine(i);
+        }
+
+     
+        public static void tryCapture()
+        {
+
+            CountIt ct = counter.Counter();
+
+            Console.WriteLine(ct(3));
+            Console.WriteLine(ct(5));
+
+
+
+        }
+
+        delegate int Incr(int val, int b);
+        delegate bool IsEven(int val);
+        public static void lambda()
+        {
+            Incr incr = (count, b) => count + b;
+            
+            Console.WriteLine(incr(-10,5));
+
+            IsEven ie = count => count % 2 == 0;
+
+            
+            Console.WriteLine(ie(2));
+        }
+
+        delegate int IntOp(int end);
+        public static void statementLambda()
+        {
+
+            IntOp a;
+            IntOp fact = end =>
+            {
+                int r = 1;
+                for (int i = 1; i <= end; i++)
+                {
+                    r = i * r;
+                }
+                return r;
+            };
+
+
+            a = fact;
+            Console.WriteLine(a(3));
+
+            
+        }
+        
     }
 }

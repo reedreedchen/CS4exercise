@@ -67,7 +67,7 @@ class main {
      //  Tests.memoryStream();
      //  Tests.stringWriter();
      //  Tests.fileClass();
-     // Tests.tryParse();
+      Tests.tryParse();
      //  Tests.delegateTest();
      //    Tests.delegateMultitasking();
 
@@ -76,7 +76,9 @@ class main {
         //  Tests.tryCapture();
 
         //Tests.lambda(); //expression lambda
-        Tests.statementLambda();
+        //Tests.statementLambda();
+    //    Tests.tryEvents();
+
     }
 
     

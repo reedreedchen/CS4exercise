@@ -450,6 +450,7 @@ namespace Renee
         }
 
 
+
         public static void tryInterface()
         {
             Animal newAnimal = new Animal("buddy", "bird");
@@ -828,7 +829,6 @@ namespace Renee
 
         public static void tryContraVariance()
         {
-
                 Y_child y = new Y_child();
 
                changeIt ci = ContraVariance.incrA; 
@@ -905,6 +905,26 @@ namespace Renee
 
             
         }
-        
+        public static void tryEvents()
+        {
+            MyEvent me = new MyEvent();
+            EventDemo ed = new EventDemo();
+
+            me.SomeEvent += (senders, e) =>
+            {
+                Console.WriteLine("received: " + e.n);
+            };
+            
+            me.SomeEvent += ed.Handler;
+            
+            me.SomeEvent += delegate (object senders, MyEventArg e)
+            {
+                Console.WriteLine("received: " + (e.n + 2));
+            };
+            //this creates and method instead of pointing to a existing method.
+            
+            me.OnSomeEvent(1);
+          
+        }
     }
 }

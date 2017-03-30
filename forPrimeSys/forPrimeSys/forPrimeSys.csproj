@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="building.cs" />
+    <Compile Include="events.cs" />
     <Compile Include="ContraVariance.cs" />
     <Compile Include="tryDelegate.cs" />
     <Compile Include="dog.cs" />

@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+
+
+using System;
 using Renee;
 
 
@@ -48,7 +51,7 @@ class main {
      //Tests.operatorOverloading(); Console.WriteLine();
      //Tests.carIndexer(); Console.WriteLine();
      // PowerOfTwo.runPowerOfTwo();
-     //Tests.dogInheritance();
+     Tests.dogInheritance();
      //    Tests.tryInterface();
      //Tests.tryEnum();
      //     Tests.checkOverflow();
@@ -67,7 +70,7 @@ class main {
      //  Tests.memoryStream();
      //  Tests.stringWriter();
      //  Tests.fileClass();
-      Tests.tryParse();
+     //  Tests.tryParse();
      //  Tests.delegateTest();
      //    Tests.delegateMultitasking();
 
@@ -77,9 +80,35 @@ class main {
 
         //Tests.lambda(); //expression lambda
         //Tests.statementLambda();
-    //    Tests.tryEvents();
+        //    Tests.tryEvents();
+        //Tests.tryUsing();
+        //Tests.tryInternal();
+       // Tests.tryAttrib();
 
     }
 
     
+}
+
+
+namespace tv {
+    class tvBasic{
+        public string Type;
+        public tvBasic(string Type) {
+            this.Type = Type;
+        }
+
+        
+        public void writeDown() {
+            Console.WriteLine(Type);
+        }
+
+
+    }
+}
+
+internal class tryAccesser{
+
+    internal int i = 0;
+
 }

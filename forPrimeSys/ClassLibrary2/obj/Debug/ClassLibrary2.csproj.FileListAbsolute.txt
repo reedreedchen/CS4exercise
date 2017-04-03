@@ -1,0 +1,5 @@
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\ClassLibrary2\bin\Debug\ClassLibrary2.dll
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\ClassLibrary2\bin\Debug\ClassLibrary2.pdb
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\ClassLibrary2\obj\Debug\ClassLibrary2.csprojResolveAssemblyReference.cache
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\ClassLibrary2\obj\Debug\ClassLibrary2.dll
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\ClassLibrary2\obj\Debug\ClassLibrary2.pdb

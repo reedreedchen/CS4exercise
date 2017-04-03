@@ -14,3 +14,5 @@ C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\EntityFrame
 C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\EntityFramework.xml
 C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\ClassLibrary2.dll
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Debug\ClassLibrary2.pdb

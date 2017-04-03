@@ -1,11 +1,14 @@
-﻿using System;
+﻿
+using System;
 using System.Linq;
 
-abstract class dog{
-    public string name;
-    protected string color;
+class dog {
+    internal string name;
+    internal string color;
     int _age;
-    protected int birthYear;
+    internal int birthYear;
+
+    public dog() { }
 
     public dog(string name, string color, int age, int birthYear)
     {
@@ -23,18 +26,22 @@ abstract class dog{
     }
 
 
-    public int age {
-        get {
+    public int age
+    {
+        get
+        {
             return _age;
         }
-        set {
+        set
+        {
             if (value > 0)
                 _age = value;
         }
     }
+    
 
-    public abstract void speak(string[] c);
-    public abstract void showInfo();
+    public virtual void speak(string[] c) { }
+    public virtual void showInfo() { }
     public static void sayhi1()
     {
         Console.WriteLine("hi");
@@ -45,6 +52,9 @@ abstract class dog{
 
 class pug : dog {
     public bool snorer;
+
+    public pug() { }
+
 
     public pug(string name, string color, int age, int birthYear, bool snorer) : base(name, color, age, birthYear)
     {
@@ -75,6 +85,7 @@ class pug : dog {
         return name.GetHashCode();
     }
 
+    
     public static bool operator ==(pug pugA, pug pugB) {
  
         if (pugA.name == pugB.name) return true;
@@ -106,12 +117,21 @@ class pug : dog {
         if (dialog.Length >= 3) throw new dogException();
         //if (dialog.Length > 3) throw new dogException();
     }
+
+    [Obsolete("this is obsolete", false)]
+    [System.Diagnostics.Conditional("Trial")]
+    public static void writedown()
+    {
+        Console.WriteLine("trial condition");
+
+    }
 }
 
 class chihuahua : dog {
 
   
-    bool isGroomed;
+    public bool isGroomed;
+    public chihuahua() { }
     public chihuahua(string name, string color, int age, int birthYear, bool isGroomed) : base(name, color, age, birthYear)
     {
         this.name = name;
@@ -138,6 +158,13 @@ class chihuahua : dog {
 
         for (int i = 0; i < dialog.Length; i++)
             Console.WriteLine(name + " says: " + dialog[i]);
+    }
+
+
+    public static implicit operator pug(chihuahua i)
+    {
+        pug p = new pug(i.name, i.color, i.age, i.birthYear, i.isGroomed);
+        return p;
     }
 
 }

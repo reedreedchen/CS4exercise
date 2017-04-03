@@ -1,0 +1,9 @@
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Release\forPrimeSys.exe.config
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Release\forPrimeSys.exe
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Release\forPrimeSys.pdb
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Release\EntityFramework.dll
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Release\EntityFramework.xml
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\obj\Release\forPrimeSys.exe
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\forPrimeSys\obj\Release\forPrimeSys.pdb

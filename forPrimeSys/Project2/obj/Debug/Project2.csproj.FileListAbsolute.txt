@@ -1,0 +1,6 @@
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\Project2\bin\Debug\Project2.exe.config
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\Project2\obj\Debug\Project2.csprojResolveAssemblyReference.cache
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\Project2\bin\Debug\Project2.exe
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\Project2\bin\Debug\Project2.pdb
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\Project2\obj\Debug\Project2.exe
+C:\Users\Renee\Desktop\CS4exercise\forPrimeSys\Project2\obj\Debug\Project2.pdb

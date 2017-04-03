@@ -6,14 +6,24 @@
  * 
  * and this multiline comment.
  * */
+#define Trial
+#define DEBUGGY
 
+//#undef DEBUGGY
+using usingTv = tv.tvBasic;
 using System;
 using System.IO;
+using ClassLibrary2;
+
+//using System.Reflection;
 //namespace->defines a declarative region->doesn't conflict 
 //System is the namespace reserved for items associated with the .NET Framework class library
 //I can create my own namespace
+
 namespace Renee
 {
+
+    [remark("hi")]
     class Tests
     {
         public static void sayHi() //entry point. always runs first. the static modification makes sure Main runs before the objects this class defines are created.
@@ -411,9 +421,7 @@ namespace Renee
             chihuahua Eagle = new chihuahua("Eagle", "fawn", 6, 2010, false);
             Emma.showInfo();
             pug Emily = new pug(Emma);
-
-            
-
+           
             Emily.name = "Emily";
 
             Console.WriteLine("Equals: " + Emily.Equals(Emma));
@@ -445,6 +453,74 @@ namespace Renee
             }
             catch {
                 Console.WriteLine("got");
+            }
+
+
+            //Runtime type id & reflection
+            dog d = new dog();
+            d = Eagle as dog;
+            chihuahua c = new chihuahua();
+            c = Eagle as chihuahua;
+            Console.WriteLine(d.name);
+
+            pug puggy = null;
+
+            Type t_chi = typeof(pug);
+            Console.WriteLine(t_chi.FullName);
+            
+            System.Reflection.ConstructorInfo[] cons = t_chi.GetConstructors();
+            for(int b = 0; b < cons.Length; b++)
+            {
+                System.Reflection.ParameterInfo[] pa = cons[b].GetParameters();
+                if(pa.Length== 5)
+                {
+                    object[] consArgs = { "puggy", "fawn", 5, 2007, false };
+                    puggy = (pug)cons[b].Invoke(consArgs);
+                    Console.WriteLine(puggy.name);
+                    break;
+                }
+            }
+        
+
+            System.Reflection.MethodInfo[] mi = t_chi.GetMethods(System.Reflection.BindingFlags.DeclaredOnly | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+
+
+            foreach (System.Reflection.MethodInfo mi_info in mi)
+            {
+                System.Reflection.ParameterInfo[] pa_info = mi_info.GetParameters();
+                /*foreach (System.Reflection.ParameterInfo pa in pa_info)
+                {
+                    Console.WriteLine("returnType: " + mi_info.ReturnType.Name + ", Method Name: " + mi_info.Name + ", Method Parameter:" + pa);
+                }
+                */
+                if (mi_info.Name.Equals("speak", StringComparison.Ordinal) && pa_info[0].ParameterType == typeof(string[]))
+                {
+                    object[] arg = new object[1];
+                    arg[0] = new string[]{ "my", "name"};
+
+                    Console.WriteLine();
+
+                    /*
+                    for(int b = 0; b < ((string[])arg[0]).Length; b++)
+                       Console.WriteLine(((string[])arg[0])[b]);
+                       */
+
+                    Console.WriteLine();
+
+                    try
+                    {
+                        mi_info.Invoke(puggy, arg);
+                    }
+                    catch (Exception exc)
+                    {
+                        Console.WriteLine(exc);
+                    }
+
+                    Type t = typeof(pug);
+                    Console.WriteLine(t.AssemblyQualifiedName);
+                }
+                Console.WriteLine("hihihdoihfapdhfap");
+                pug.writedown();
             }
 
         }
@@ -922,9 +998,61 @@ namespace Renee
                 Console.WriteLine("received: " + (e.n + 2));
             };
             //this creates and method instead of pointing to a existing method.
-            
             me.OnSomeEvent(1);
           
         }
+
+
+        public static void tryUsing()
+        {
+
+#pragma warning disable
+
+#pragma warning restore CS1030
+            #region tv
+            usingTv tv = new usingTv("sony");
+
+            if (false) {
+
+            }
+
+            int x = 0;
+            int y =5;
+            #endregion
+
+
+#if Bugby
+#warning hi2;
+#endif
+#if DEBUGGY
+            tv.writeDown();
+#endif
+//#warning hi
+#line 200 "special"
+            Console.WriteLine("Normal line #1."); // Set break point here.  
+#line 50
+            Console.WriteLine("Hidden line.");
+#line default
+            Console.WriteLine("Normal line #2.");
+
+        }
+        public static void tryInternal() {
+
+            tryAccesser tA = new tryAccesser();
+
+            Console.WriteLine(tA.i);
+
+            printer pt = new printer("this is renee");
+            if (pt is printer)
+                pt.print();
+        }
+
+        public static void tryAttrib() {
+            Type t = typeof(UseAttrib);
+            Type tRemark = typeof(remarkAttribute);
+            remarkAttribute ra = (remarkAttribute)Attribute.GetCustomAttribute(t, tRemark);
+            Console.WriteLine("\"" + ra.remark + "\", \"" + ra.suppliment + "\"," + ra.priority);
+        }
+
     }
 }
